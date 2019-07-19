@@ -7,8 +7,9 @@
     "start": "node server",
     "server": "nodemon server",
     "client": "npm start --prefix client",
-    "dev": "export NODE_ENV=dev&&concurrently \"npm run server\" \"npm run client\"",
-    "test": "export NODE_ENV=test&&mocha --recursive --exit"
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "heroku-postbuild":
+      "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client"
   },
   "author": "Michael Chen",
   "license": "MIT",
@@ -22,6 +23,7 @@
     "mockgoose": "^8.0.2",
     "mongoose": "^5.6.0",
     "request": "^2.88.0",
+    "serverless-http": "^2.0.2",
     "supertest": "^4.0.2"
   },
   "devDependencies": {
